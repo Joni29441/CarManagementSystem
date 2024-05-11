@@ -6,6 +6,7 @@ namespace CarManagementSystem.Data
     {
         public ApplicationDbContext(DbContextOptions options) : base(options)
         {
+
         }
     }
 }
