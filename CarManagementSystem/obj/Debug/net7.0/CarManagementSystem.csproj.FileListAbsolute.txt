@@ -41,3 +41,5 @@ C:\Users\Jon Fetahi\source\repos\CarManagementSystem\CarManagementSystem\obj\Deb
 C:\Users\Jon Fetahi\source\repos\CarManagementSystem\CarManagementSystem\obj\Debug\net7.0\CarManagementSystem.pdb
 C:\Users\Jon Fetahi\source\repos\CarManagementSystem\CarManagementSystem\obj\Debug\net7.0\CarManagementSystem.genruntimeconfig.cache
 C:\Users\Jon Fetahi\source\repos\CarManagementSystem\CarManagementSystem\obj\Debug\net7.0\ref\CarManagementSystem.dll
+C:\Users\Jon Fetahi\source\repos\CarManagementSystem\CarManagementSystem\bin\Debug\net7.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\Jon Fetahi\source\repos\CarManagementSystem\CarManagementSystem\bin\Debug\net7.0\AutoMapper.dll
