@@ -1,0 +1,71 @@
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
+using CarManagementSystem.DTOs;
+using CarManagementSystem.Models;
+using CarManagementSystem.Repositories.Interfaces;
+using CarManagementSystem.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
+
+namespace CarManagementSystem.Controllers
+{
+    [ApiController]
+    [Route("api/[controller]")]
+    public class VehicleController : ControllerBase
+    {
+        private readonly IVehicleService _vehicleService;
+
+        public VehicleController(IVehicleService vehicleService)
+        {
+            _vehicleService = vehicleService;
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<CreateVehicleDTO>>> GetAllVehiclesAsync() 
+        {
+            var response = await _vehicleService.GetAllVehiclesAsync();
+
+            return Ok(response);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> AddVehicleAsync(CreateVehicleDTO createVehicleDTO) 
+        {
+            await _vehicleService.AddVehicleAsync(createVehicleDTO);
+            return Ok();
+        }
+
+        [HttpDelete("/{id}")]
+        public async Task<ActionResult> DeleteVehicleAsync(int id)
+        {
+            await _vehicleService.DeleteVehicleAsync(id);
+            return Ok();
+        }
+
+        [HttpGet("/{id}")]
+        public async Task<ActionResult<CreateVehicleDTO>> GetVehicleByIdAsync(int id)
+        {
+            var response = await _vehicleService.GetVehicleByIdAsync(id);
+            return Ok(response);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult> UpdateVehicleAsync(CreateVehicleDTO createVehicleDTO, int id)
+        {
+            await _vehicleService.UpdateVehicleAsync(createVehicleDTO, id);
+            return Ok();
+        }
+
+        [HttpGet("{model}")]
+        public async Task<ActionResult<IEnumerable<VehicleDTO>>> GetVehiclesByModelAsync(string model)
+        {
+            var response = await _vehicleService.GetVehiclesByModelAsync(model);
+
+            return Ok(response);
+
+        }
+
+
+    }
+}

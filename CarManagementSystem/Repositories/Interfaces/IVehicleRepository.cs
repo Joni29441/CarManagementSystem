@@ -1,4 +1,5 @@
-﻿using CarManagementSystem.Models;
+﻿using CarManagementSystem.DTOs;
+using CarManagementSystem.Models;
 
 namespace CarManagementSystem.Repositories.Interfaces
 {
@@ -6,10 +7,9 @@ namespace CarManagementSystem.Repositories.Interfaces
     {
         Task<IEnumerable<Vehicle>> GetAllVehiclesAsync();
         Task<Vehicle> GetVehicleByIdAsync(int id);
-        Task<Vehicle> AddVehicleAsync(Vehicle vehicle);
-        Task<Vehicle> UpdateVehicleAsync(Vehicle vehicle);
+        Task AddVehicleAsync(CreateVehicleDTO vehicleDto);
+        Task UpdateVehicleAsync(CreateVehicleDTO vehicleDto, int id);
         Task DeleteVehicleAsync(int id);
-        Task<IEnumerable<Vehicle>> GetVehiclesByNameAsync(string name);
         Task<IEnumerable<Vehicle>> GetVehiclesByModelAsync(string model);
         Task<IEnumerable<Vehicle>> GetVehiclesByBrandAsync(string brand);
         Task<IEnumerable<Vehicle>> GetVehiclesByYearAsync(int year);
