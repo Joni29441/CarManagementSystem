@@ -3,6 +3,7 @@ using CarManagementSystem.DTOs;
 using CarManagementSystem.Models;
 using CarManagementSystem.Repositories.Interfaces;
 using CarManagementSystem.Services.Interfaces;
+using System.Xml.Linq;
 
 namespace CarManagementSystem.Services.Implementations
 {
@@ -19,7 +20,9 @@ namespace CarManagementSystem.Services.Implementations
 
         public async Task AddVehicleAsync(CreateVehicleDTO createVehicleDTO)
         {
-            await _vehicleRepository.AddVehicleAsync(createVehicleDTO);
+            var vehicle = _mapper.Map<Vehicle>(createVehicleDTO);
+            vehicle.Status = VehicleStatus.Available;
+            await _vehicleRepository.AddVehicleAsync(vehicle);
         }
 
         public async Task DeleteVehicleAsync(int id)
@@ -54,24 +57,21 @@ namespace CarManagementSystem.Services.Implementations
 
         public async Task<IEnumerable<VehicleDTO>> GetVehiclesByBrandAsync(string brand)
         {
-            //return await _vehicleRepository.GetVehiclesByBrandAsync(brand);      ASK THE PROFESSOR
-            throw new NotImplementedException();
-
+            var vehicles = await _vehicleRepository.GetVehiclesByBrandAsync(brand);
+            return _mapper.Map<IEnumerable<VehicleDTO>>(vehicles);
         }
 
-        public Task<IEnumerable<VehicleDTO>> GetVehiclesByModelAsync(string model)
+        public async Task<IEnumerable<VehicleDTO>> GetVehiclesByModelAsync(string model)
         {
-            throw new NotImplementedException();
+            var vehicles = await _vehicleRepository.GetVehiclesByModelAsync(model);
+            return _mapper.Map<IEnumerable<VehicleDTO>>(vehicles);
         }
 
-        public Task<IEnumerable<VehicleDTO>> GetVehiclesByNameAsync(string name)
+    
+        public async Task<IEnumerable<VehicleDTO>> GetVehiclesByYearAsync(int year)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task<IEnumerable<VehicleDTO>> GetVehiclesByYearAsync(int year)
-        {
-            throw new NotImplementedException();
+            var vehicles = await _vehicleRepository.GetVehiclesByYearAsync(year);
+            return _mapper.Map<IEnumerable<VehicleDTO>>(vehicles);
         }
 
         public async Task UpdateVehicleAsync(CreateVehicleDTO createVehicleDTO, int id)

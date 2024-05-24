@@ -50,14 +50,21 @@ namespace CarManagementSystem.Controllers
             return Ok(response);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("/{id}")]
         public async Task<ActionResult> UpdateVehicleAsync(CreateVehicleDTO createVehicleDTO, int id)
         {
             await _vehicleService.UpdateVehicleAsync(createVehicleDTO, id);
             return Ok();
         }
 
-        [HttpGet("{model}")]
+        [HttpGet("search/byBrand/{brand}")]
+        public async Task<ActionResult<IEnumerable<VehicleDTO>>> GetVehiclesByBrandAsync(string brand)
+        {
+            var vehicles = await _vehicleService.GetVehiclesByBrandAsync(brand);
+            return Ok(vehicles);
+        }
+
+        [HttpGet("search/byModel/{model}")]
         public async Task<ActionResult<IEnumerable<VehicleDTO>>> GetVehiclesByModelAsync(string model)
         {
             var response = await _vehicleService.GetVehiclesByModelAsync(model);

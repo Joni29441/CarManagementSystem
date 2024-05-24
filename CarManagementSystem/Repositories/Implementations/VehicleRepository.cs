@@ -16,14 +16,14 @@ namespace CarManagementSystem.Repositories.Implementations
             _context = context;
         }
 
-        public async Task AddVehicleAsync(CreateVehicleDTO vehicleDto)
+        public async Task AddVehicleAsync(Vehicle vehicle)
         {
             Vehicle requestBody = new Vehicle();
 
-            requestBody.Brand = vehicleDto.Brand;
-            requestBody.Model = vehicleDto.Model;
-            requestBody.Year = vehicleDto.Year;
-            requestBody.Price = vehicleDto.Price;
+            requestBody.Brand = vehicle.Brand;
+            requestBody.Model = vehicle.Model;
+            requestBody.Year = vehicle.Year;
+            requestBody.Price = vehicle.Price;
             
 
             _context.Vehicles.Add(requestBody);

@@ -7,7 +7,7 @@ namespace CarManagementSystem.Repositories.Interfaces
     {
         Task<IEnumerable<Vehicle>> GetAllVehiclesAsync();
         Task<Vehicle> GetVehicleByIdAsync(int id);
-        Task AddVehicleAsync(CreateVehicleDTO vehicleDto);
+        Task AddVehicleAsync(Vehicle vehicle);
         Task UpdateVehicleAsync(CreateVehicleDTO vehicleDto, int id);
         Task DeleteVehicleAsync(int id);
         Task<IEnumerable<Vehicle>> GetVehiclesByModelAsync(string model);
