@@ -74,9 +74,9 @@ namespace CarManagementSystem.Services.Implementations
             return _mapper.Map<IEnumerable<VehicleDTO>>(vehicles);
         }
 
-        public async Task UpdateVehicleAsync(CreateVehicleDTO createVehicleDTO, int id)
+        public async Task UpdateVehicleAsync(Vehicle vehicle, int id)
         {
-            await _vehicleRepository.UpdateVehicleAsync(createVehicleDTO, id);
+            await _vehicleRepository.UpdateVehicleAsync(vehicle, id);
         }
     }
 }

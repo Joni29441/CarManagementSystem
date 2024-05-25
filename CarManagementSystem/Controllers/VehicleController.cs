@@ -22,6 +22,7 @@ namespace CarManagementSystem.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<IEnumerable<CreateVehicleDTO>>> GetAllVehiclesAsync() 
         {
             var response = await _vehicleService.GetAllVehiclesAsync();
@@ -30,9 +31,9 @@ namespace CarManagementSystem.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> AddVehicleAsync(CreateVehicleDTO createVehicleDTO) 
+        public async Task<ActionResult> AddVehicleAsync(CreateVehicleDTO createVehicleDto) 
         {
-            await _vehicleService.AddVehicleAsync(createVehicleDTO);
+            await _vehicleService.AddVehicleAsync(createVehicleDto);
             return Ok();
         }
 
@@ -51,9 +52,9 @@ namespace CarManagementSystem.Controllers
         }
 
         [HttpPut("/{id}")]
-        public async Task<ActionResult> UpdateVehicleAsync(CreateVehicleDTO createVehicleDTO, int id)
+        public async Task<ActionResult> UpdateVehicleAsync(Vehicle vehicle, int id)
         {
-            await _vehicleService.UpdateVehicleAsync(createVehicleDTO, id);
+            await _vehicleService.UpdateVehicleAsync(vehicle, id);
             return Ok();
         }
 
@@ -70,9 +71,6 @@ namespace CarManagementSystem.Controllers
             var response = await _vehicleService.GetVehiclesByModelAsync(model);
 
             return Ok(response);
-
         }
-
-
     }
 }

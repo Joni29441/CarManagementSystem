@@ -10,9 +10,9 @@ namespace CarManagementSystem.Services.Interfaces
         
         Task<VehicleDTO> GetVehicleByIdAsync(int id);
         
-        Task AddVehicleAsync(CreateVehicleDTO createVehicleDTO);
+        Task AddVehicleAsync(CreateVehicleDTO createVehicleDto);
         
-        Task UpdateVehicleAsync(CreateVehicleDTO createVehicleDTO, int id);
+        Task UpdateVehicleAsync(Vehicle vehicle, int id);
 
         Task DeleteVehicleAsync(int id);
         

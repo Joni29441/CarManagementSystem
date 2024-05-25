@@ -75,16 +75,16 @@ namespace CarManagementSystem.Repositories.Implementations
                 .ToListAsync();
         }
 
-        public async Task UpdateVehicleAsync(CreateVehicleDTO vehicleDto, int id)
+        public async Task UpdateVehicleAsync(Vehicle vehicle, int id)
         {
             var vehicles = await _context.Vehicles.FindAsync(id);
 
             if (vehicles != null)
             {
-                vehicles.Brand = vehicleDto.Brand;
-                vehicles.Model = vehicleDto.Model;
-                vehicles.Year = vehicleDto.Year;
-                vehicles.Price = vehicleDto.Price;
+                vehicles.Brand = vehicle.Brand;
+                vehicles.Model = vehicle.Model;
+                vehicles.Year = vehicle.Year;
+                vehicles.Price = vehicle.Price;
 
                 _context.Entry(vehicles).State = EntityState.Modified;
                 await _context.SaveChangesAsync();

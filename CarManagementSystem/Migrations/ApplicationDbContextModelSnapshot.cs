@@ -49,7 +49,7 @@ namespace CarManagementSystem.Migrations
 
                     b.HasIndex("VehicleId");
 
-                    b.ToTable("Transactions");
+                    b.ToTable("Transactions", (string)null);
                 });
 
             modelBuilder.Entity("CarManagementSystem.Models.Vehicle", b =>
@@ -79,7 +79,7 @@ namespace CarManagementSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Vehicles");
+                    b.ToTable("Vehicles", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
