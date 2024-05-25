@@ -72,5 +72,13 @@ namespace CarManagementSystem.Controllers
 
             return Ok(response);
         }
+
+        [HttpGet("search/byYear/{year}")]
+        public async Task<ActionResult<IEnumerable<VehicleDTO>>> GetVehiclesByYearAsync(int year)
+        {
+            var response = await _vehicleService.GetVehiclesByYearAsync(year);
+
+            return Ok(response);
+        }
     }
 }

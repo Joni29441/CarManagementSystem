@@ -21,5 +21,7 @@ namespace CarManagementSystem.Services.Interfaces
         Task<IEnumerable<VehicleDTO>> GetVehiclesByBrandAsync(string brand);
         
         Task<IEnumerable<VehicleDTO>> GetVehiclesByYearAsync(int year);
+
+
     }
 }
