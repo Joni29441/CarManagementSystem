@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Jon Fetahi\\source\\repos\\CarManagementSystem\\CarManagementSystem\\CarManagementSystem.csproj": {}
+    "C:\\Users\\semin\\source\\repos\\CarManagementSystem\\CarManagementSystem\\CarManagementSystem.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Jon Fetahi\\source\\repos\\CarManagementSystem\\CarManagementSystem\\CarManagementSystem.csproj": {
+    "C:\\Users\\semin\\source\\repos\\CarManagementSystem\\CarManagementSystem\\CarManagementSystem.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Jon Fetahi\\source\\repos\\CarManagementSystem\\CarManagementSystem\\CarManagementSystem.csproj",
+        "projectUniqueName": "C:\\Users\\semin\\source\\repos\\CarManagementSystem\\CarManagementSystem\\CarManagementSystem.csproj",
         "projectName": "CarManagementSystem",
-        "projectPath": "C:\\Users\\Jon Fetahi\\source\\repos\\CarManagementSystem\\CarManagementSystem\\CarManagementSystem.csproj",
-        "packagesPath": "C:\\Users\\Jon Fetahi\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Jon Fetahi\\source\\repos\\CarManagementSystem\\CarManagementSystem\\obj\\",
+        "projectPath": "C:\\Users\\semin\\source\\repos\\CarManagementSystem\\CarManagementSystem\\CarManagementSystem.csproj",
+        "packagesPath": "C:\\Users\\semin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\semin\\source\\repos\\CarManagementSystem\\CarManagementSystem\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Jon Fetahi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\semin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -39,6 +39,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -111,7 +116,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200\\RuntimeIdentifierGraph.json"
         }
       }
     }

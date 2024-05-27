@@ -1,6 +1,7 @@
 using CarManagementSystem.Data;
 using CarManagementSystem.Repositories.Implementations;
 using CarManagementSystem.Repositories.Interfaces;
+using CarManagementSystem.Services;
 using CarManagementSystem.Services.AuthenticationService;
 using CarManagementSystem.Services.Implementations;
 using CarManagementSystem.Services.Interfaces;
@@ -77,6 +78,10 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddScoped<IVehicleRepository, VehicleRepository>();
 builder.Services.AddScoped<IVehicleService, VehicleService>();
+
+builder.Services.AddScoped<ITransactionRepository, TransactionRepository>();
+builder.Services.AddScoped<ITransactionService, TransactionService>();
+
 builder.Services.AddScoped<UserManager<IdentityUser>>();
 builder.Services.AddScoped<TokenService, TokenService>();
 

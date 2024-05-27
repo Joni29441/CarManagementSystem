@@ -10,6 +10,8 @@ namespace CarManagementSystem.Mapping
         {
             CreateMap<Vehicle, VehicleDTO>();
             CreateMap<CreateVehicleDTO, Vehicle>();
+
+
             CreateMap<Transaction, TransactionDTO>();
             CreateMap<TransactionDTO, Transaction>();
         }
