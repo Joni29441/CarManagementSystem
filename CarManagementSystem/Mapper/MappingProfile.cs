@@ -8,7 +8,8 @@ namespace CarManagementSystem.Mapping
     {
         public MappingProfile()
         {
-            CreateMap<Vehicle, VehicleDTO>();
+            CreateMap<Vehicle, VehicleDTO>()
+                            .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status.ToString())); 
             CreateMap<CreateVehicleDTO, Vehicle>();
 
 

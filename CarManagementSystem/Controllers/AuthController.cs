@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using CarManagementSystem.Data;
 using CarManagementSystem.Services.Implementations;
 using CarManagementSystem.Services.Interfaces;
+using System.Data;
 
 namespace CarManagementSystem.Controllers
 {
@@ -84,6 +85,8 @@ namespace CarManagementSystem.Controllers
             }
 
             var accessToken = await _tokenService.CreateToken(userInDb);
+            var roles = await _userManager.GetRolesAsync(managedUser);
+
             await _context.SaveChangesAsync();
 
             return Ok(new AuthResponseDTO
@@ -91,6 +94,7 @@ namespace CarManagementSystem.Controllers
                 Username = userInDb.UserName,
                 Email = userInDb.Email,
                 Token = accessToken,
+                Roles = roles.ToList() // Ensure roles are included in the response
             });
         }
 

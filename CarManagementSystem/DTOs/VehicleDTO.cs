@@ -9,6 +9,6 @@ namespace CarManagementSystem.DTOs
         public string Model { get; set; }
         public int Year { get; set; }
         public decimal Price { get; set; }
-        public VehicleStatus Status { get; set; }
+        public string Status { get; set; }
     }
 }

@@ -1,11 +1,54 @@
 {
   "Version": 1,
-  "Hash": "5Ec4xxfhkuXs1VIrX2axC5wjHkRN1mxvf/bDoELxppU=",
+  "Hash": "KVnOQ85PRrZn1JCge88N5r4h/gTbNS4t3iJpFy5q9Lc=",
   "Source": "CarManagementSystem",
   "BasePath": "_content/CarManagementSystem",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "CarManagementSystem\\wwwroot",
+      "Source": "CarManagementSystem",
+      "ContentRoot": "C:\\Users\\Jon Fetahi\\source\\repos\\CarManagementSystem\\CarManagementSystem\\wwwroot\\",
+      "BasePath": "_content/CarManagementSystem",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\Jon Fetahi\\source\\repos\\CarManagementSystem\\CarManagementSystem\\wwwroot\\images\\2021-volkswagen-golf-gti-mmp-1-1590522492.jpg",
+      "SourceId": "CarManagementSystem",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Jon Fetahi\\source\\repos\\CarManagementSystem\\CarManagementSystem\\wwwroot\\",
+      "BasePath": "_content/CarManagementSystem",
+      "RelativePath": "images/2021-volkswagen-golf-gti-mmp-1-1590522492.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\2021-volkswagen-golf-gti-mmp-1-1590522492.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Jon Fetahi\\source\\repos\\CarManagementSystem\\CarManagementSystem\\wwwroot\\images\\m5comp.jpg",
+      "SourceId": "CarManagementSystem",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Jon Fetahi\\source\\repos\\CarManagementSystem\\CarManagementSystem\\wwwroot\\",
+      "BasePath": "_content/CarManagementSystem",
+      "RelativePath": "images/m5comp.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\m5comp.jpg"
+    }
+  ]
 }

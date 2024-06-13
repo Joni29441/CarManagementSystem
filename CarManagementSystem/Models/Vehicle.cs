@@ -20,5 +20,6 @@ namespace CarManagementSystem.Models
         public VehicleStatus Status { get; set; }
 
 
+
     }
 }

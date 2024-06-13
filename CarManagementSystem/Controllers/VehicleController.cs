@@ -22,7 +22,6 @@ namespace CarManagementSystem.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "Admin")]
         public async Task<ActionResult<IEnumerable<CreateVehicleDTO>>> GetAllVehiclesAsync() 
         {
             var response = await _vehicleService.GetAllVehiclesAsync();

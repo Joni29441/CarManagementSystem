@@ -103,7 +103,7 @@ app.UseCors(builder => builder
     .AllowAnyHeader());
 
 app.UseHttpsRedirection();
-
+app.UseStaticFiles();
 app.UseAuthentication();
 app.UseAuthorization();
 

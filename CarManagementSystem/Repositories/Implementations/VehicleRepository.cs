@@ -24,7 +24,7 @@ namespace CarManagementSystem.Repositories.Implementations
             requestBody.Model = vehicle.Model;
             requestBody.Year = vehicle.Year;
             requestBody.Price = vehicle.Price;
-            
+            requestBody.Status = VehicleStatus.Available;
 
             _context.Vehicles.Add(requestBody);
             await _context.SaveChangesAsync();
