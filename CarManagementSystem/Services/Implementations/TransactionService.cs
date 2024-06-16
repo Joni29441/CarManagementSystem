@@ -36,9 +36,9 @@ namespace CarManagementSystem.Services
         public async Task AddTransactionAsync(CreateTransactionDTO createTransactionDTO)
         {
             var vehicle = await _vehicleRepository.GetVehicleByIdAsync(createTransactionDTO.VehicleId);
-            if (vehicle == null || vehicle.Status != VehicleStatus.Available)
+            if (vehicle == null || vehicle.Status == VehicleStatus.Sold)
             {
-                throw new InvalidOperationException("Vehicle is not available.");
+                throw new Exception("Vehicle not available");
             }
 
             var transaction = _mapper.Map<Transaction>(createTransactionDTO);

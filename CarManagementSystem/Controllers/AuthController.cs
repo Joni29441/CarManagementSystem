@@ -15,6 +15,7 @@ namespace CarManagementSystem.Controllers
     [Route("api/[controller]")]
     public class AuthController : ControllerBase
     {
+        private readonly SignInManager<IdentityUser> signInManager;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
 
@@ -91,11 +92,12 @@ namespace CarManagementSystem.Controllers
 
             return Ok(new AuthResponseDTO
             {
+                UserId = userInDb.Id,
                 Username = userInDb.UserName,
                 Email = userInDb.Email,
                 Token = accessToken,
-                Roles = roles.ToList() // Ensure roles are included in the response
-            });
+                Roles = await _userManager.GetRolesAsync(managedUser) // Return roles as well
+            }) ;
         }
 
         [HttpPost("role")]
@@ -124,6 +126,25 @@ namespace CarManagementSystem.Controllers
             }
             return Ok();
         }
+
+
+    //    [HttpGet("logout")]
+    //    public async Task<ActionResult> LogoutUser()
+    //    {
+
+    //        try
+    //        {
+    //            await signInManager.SignOutAsync();
+    //        }
+    //        catch (Exception ex)
+    //        {
+    //            return BadRequest("Someting went wrong, please try again" + ex.Message);
+
+    //        }
+
+    //        return Ok("You Have Been Logged Out");
+    //    }
+
     }
 }
 
