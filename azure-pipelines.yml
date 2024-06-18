@@ -16,28 +16,6 @@ steps:
     version: '6.x' # Adjust this based on your .NET version
     installationPath: $(Agent.ToolsDirectory)/dotnet
 
-- task: NodeTool@0
-  inputs:
-    versionSpec: '14.x' # Adjust this based on your Node.js version
-
-- script: |
-    echo Installing npm packages...
-    cd frontend
-    npm install
-  displayName: 'Install npm packages'
-
-- script: |
-    echo Building frontend...
-    cd frontend
-    npm run build
-  displayName: 'Build frontend'
-
-- script: |
-    echo Copying frontend build to backend...
-    cd frontend
-    cp -r build ../backend/wwwroot
-  displayName: 'Copy frontend build to backend'
-
 - script: |
     echo Building backend...
     cd backend
