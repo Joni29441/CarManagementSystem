@@ -1,19 +1,69 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
-- master
+  branches:
+    include:
+      - master
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: 'ubuntu-latest'
+
+variables:
+  buildConfiguration: 'Release'
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- task: UseDotNet@2
+  inputs:
+    packageType: 'sdk'
+    version: '6.x' # Adjust this based on your .NET version
+    installationPath: $(Agent.ToolsDirectory)/dotnet
+
+- task: NodeTool@0
+  inputs:
+    versionSpec: '14.x' # Adjust this based on your Node.js version
 
 - script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+    echo Installing npm packages...
+    cd frontend
+    npm install
+  displayName: 'Install npm packages'
+
+- script: |
+    echo Building frontend...
+    cd frontend
+    npm run build
+  displayName: 'Build frontend'
+
+- script: |
+    echo Copying frontend build to backend...
+    cd frontend
+    cp -r build ../backend/wwwroot
+  displayName: 'Copy frontend build to backend'
+
+- script: |
+    echo Building backend...
+    cd backend
+    dotnet build --configuration $(buildConfiguration)
+  displayName: 'Build backend'
+
+- script: |
+    echo Running tests...
+    cd backend
+    dotnet test --configuration $(buildConfiguration)
+  displayName: 'Run tests'
+
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(System.DefaultWorkingDirectory)/backend'
+    includeRootFolder: false
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    replaceExistingArchive: true
+
+- publish: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
+  artifact: drop
+
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: '<Your Azure Subscription>'
+    appType: 'webAppLinux'
+    appName: '<Your App Service Name>'
+    package: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
