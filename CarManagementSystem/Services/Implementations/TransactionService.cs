@@ -24,7 +24,14 @@ namespace CarManagementSystem.Services
         public async Task<IEnumerable<TransactionDTO>> GetAllTransactionsAsync()
         {
             var transactions = await _transactionRepository.GetAllTransactionsAsync();
-            return _mapper.Map<IEnumerable<TransactionDTO>>(transactions);
+            return transactions.Select(t => new TransactionDTO
+            {
+                Id = t.Id,
+                VehicleId = t.VehicleId,
+                UserId = t.UserId,
+                TransactionDate = t.TransactionDate,
+                Amount = t.Amount
+            });
         }
 
         public async Task<TransactionDTO> GetTransactionByIdAsync(int id)
@@ -35,25 +42,33 @@ namespace CarManagementSystem.Services
 
         public async Task AddTransactionAsync(CreateTransactionDTO createTransactionDTO)
         {
-            var vehicle = await _vehicleRepository.GetVehicleByIdAsync(createTransactionDTO.VehicleId);
-            if (vehicle == null || vehicle.Status == VehicleStatus.Sold)
+            try
             {
-                throw new Exception("Vehicle not available");
+                var vehicle = await _vehicleRepository.GetVehicleByIdAsync(createTransactionDTO.VehicleId);
+                if (vehicle == null || vehicle.Status == VehicleStatus.Sold)
+                {
+                    throw new Exception("Vehicle not available");
+                }
+
+                var transaction = new Transaction
+                {
+                    VehicleId = createTransactionDTO.VehicleId,
+                    UserId = createTransactionDTO.UserId,
+                    Amount = createTransactionDTO.Amount,
+                    TransactionDate = DateTime.UtcNow
+                };
+
+                await _transactionRepository.AddTransactionAsync(transaction);
+
+                // Update the status of the vehicle to Sold
+                vehicle.Status = VehicleStatus.Sold;
+                await _vehicleRepository.UpdateVehicleAsync(vehicle, vehicle.Id);
             }
-
-            var transaction = new Transaction
+            catch (Exception ex)
             {
-                VehicleId = createTransactionDTO.VehicleId,
-                UserId = createTransactionDTO.UserId,
-                Amount = createTransactionDTO.Amount,
-                TransactionDate = DateTime.UtcNow
-            };
-
-            await _transactionRepository.AddTransactionAsync(transaction);
-
-            // Update the status of the vehicle to Sold
-            vehicle.Status = VehicleStatus.Sold;
-            await _vehicleRepository.UpdateVehicleAsync(vehicle, vehicle.Id);
+                Console.WriteLine($"Error in AddTransactionAsync: {ex.Message}");
+                throw; 
+            }
         }
     }
 }
