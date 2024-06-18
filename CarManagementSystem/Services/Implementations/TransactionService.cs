@@ -41,8 +41,13 @@ namespace CarManagementSystem.Services
                 throw new Exception("Vehicle not available");
             }
 
-            var transaction = _mapper.Map<Transaction>(createTransactionDTO);
-            transaction.TransactionDate = DateTime.UtcNow;
+            var transaction = new Transaction
+            {
+                VehicleId = createTransactionDTO.VehicleId,
+                UserId = createTransactionDTO.UserId,
+                Amount = createTransactionDTO.Amount,
+                TransactionDate = DateTime.UtcNow
+            };
 
             await _transactionRepository.AddTransactionAsync(transaction);
 

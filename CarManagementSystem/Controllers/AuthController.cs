@@ -85,8 +85,8 @@ namespace CarManagementSystem.Controllers
                 return Unauthorized();
             }
 
+            var roles = await _userManager.GetRolesAsync(managedUser); // Get user roles
             var accessToken = await _tokenService.CreateToken(userInDb);
-            var roles = await _userManager.GetRolesAsync(managedUser);
 
             await _context.SaveChangesAsync();
 
@@ -96,7 +96,7 @@ namespace CarManagementSystem.Controllers
                 Username = userInDb.UserName,
                 Email = userInDb.Email,
                 Token = accessToken,
-                Roles = await _userManager.GetRolesAsync(managedUser) // Return roles as well
+                Roles = roles
             }) ;
         }
 

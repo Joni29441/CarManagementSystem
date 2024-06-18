@@ -19,7 +19,5 @@ namespace CarManagementSystem.Models
         public decimal Price { get; set; }
         public VehicleStatus Status { get; set; }
 
-
-
     }
 }

@@ -19,7 +19,7 @@ namespace CarManagementSystem.Repositories.Implementations
         public async Task AddVehicleAsync(Vehicle vehicle)
         {
             Vehicle requestBody = new Vehicle();
-
+            
             requestBody.Brand = vehicle.Brand;
             requestBody.Model = vehicle.Model;
             requestBody.Year = vehicle.Year;

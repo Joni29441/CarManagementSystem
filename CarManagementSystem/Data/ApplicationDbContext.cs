@@ -20,10 +20,10 @@ namespace CarManagementSystem.Data
 
             // Configure the relationship and foreign keys
             modelBuilder.Entity<Transaction>()
-                 .HasOne(t => t.Vehicle)
-                 .WithMany()
-                 .HasForeignKey(t => t.VehicleId)
-                 .OnDelete(DeleteBehavior.Cascade);
+              .HasOne(t => t.Vehicle)
+              .WithMany()
+              .HasForeignKey(t => t.VehicleId)
+              .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Transaction>()
                 .HasOne(t => t.User)
