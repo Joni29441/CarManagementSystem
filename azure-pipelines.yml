@@ -63,7 +63,7 @@ steps:
 
 - task: AzureWebApp@1
   inputs:
-    azureSubscription: '<Your Azure Subscription>'
+    azureSubscription: 'CarManagementSystem'
     appType: 'webAppLinux'
-    appName: '<Your App Service Name>'
+    appName: 'CarManagementSystem'
     package: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
